@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINE COINS 247 - No Badge</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;padding:15px 15px 120px 15px;min-height:100vh}
+h1{color:gold;text-align:center;margin:10px 0}
+p{text-align:center}
+.card{background:rgba(255,255,255,0.12);border:1px solid gold;border-radius:18px;padding:18px;margin:14px auto;max-width:480px;backdrop-filter:blur(10px)}
+.mine{font-size:56px;color:gold;font-weight:bold;text-align:center}
+.btn{width:100%;background:linear-gradient(90deg,gold,orange);color:#000;padding:16px;border:0;border-radius:30px;font-weight:bold;font-size:19px;margin-top:10px}
+.btn:disabled{opacity:0.4}
+.nav{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:12px auto;max-width:480px}
+.nav span{background:rgba(255,255,255,0.15);border:1px solid gold;padding:7px 12px;border-radius:20px;font-size:12px}
+.socials{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.socials a{background:#fff;color:#000;padding:7px 12px;border-radius:20px;text-decoration:none;font-size:12px;font-weight:bold}
+input{width:100%;padding:12px;border-radius:12px;border:1px solid gold;background:rgba(0,0,0,0.4);color:#fff;margin:6px 0}
+small{color:#ccc;font-size:11px;display:block;text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<h1>⛏️ MINE COINS 247</h1>
+<p>Official - No Badge - Professional - mine-coins247.web.app</p>
+
+<div class="nav">
+<span>⛏️ Mine</span><span>📋 Tasks</span><span>👥 Referral</span><span>💳 Wallet</span><span>💰 Buy</span><span>💸 Sell</span><span>🪪 KYC</span><span>🏆 Board</span>
+</div>
+
+<div class="card">
+<div style="text-align:center;opacity:0.8">YOUR COINS</div>
+<div class="mine" id="bal">0</div>
+<div id="timer" style="text-align:center;color:gold;font-size:22px;font-weight:bold">Ready to Mine!</div>
+<div style="text-align:center;font-size:50px;margin:8px">🪙</div>
+<button class="btn" id="mineBtn" onclick="doMine()">⛏️ MINE NOW - +10</button>
+<p style="margin-top:8px;font-size:13px">Mine every 20 mins - Timer saves even if you close app</p>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">📋 DAILY TASKS</h3>
+<p style="text-align:center;font-size:14px;margin:6px">✅ Daily Login +5<br>✅ Share App +10<br>✅ Watch Video +5</p>
+<button class="btn" onclick="alert('Tasks Coming Soon! Keep Mining!')">Complete Task</button>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">👥 REFERRAL - EARN 20%</h3>
+<input type="text" id="refLink" value="https://mine-coins247.web.app/?ref=USER123" readonly>
+<button class="btn" onclick="copyRef()">📋 Copy Referral Link</button>
+<p style="font-size:13px;margin-top:6px">Invite friends - You get 20% of their mining forever!</p>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">💳 WALLET & PROFILE</h3>
+<p>Balance: <b id="bal2">0</b> Coins</p>
+<input type="text" placeholder="Your Wallet Address (e.g 0x123...)">
+<input type="text" placeholder="Your Full Name">
+<button class="btn" onclick="alert('Wallet Saved! - On Phone No Badge will cover this before, now fixed with padding!')">💾 Save Wallet & Profile</button>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">💰 BUY & 💸 SELL COINS</h3>
+<input type="number" placeholder="Amount to Buy/Sell">
+<button class="btn" onclick="alert('Buy/Sell Coming Soon! P2P Marketplace Launching!')">Buy / Sell Now</button>
+<p style="font-size:12px;margin-top:6px">Rate: 100 Coins = $1 USD - Secure P2P</p>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">🪪 KYC VERIFICATION</h3>
+<input type="text" placeholder="Full Name as per ID">
+<input type="text" placeholder="ID Number">
+<button class="btn" onclick="alert('KYC Submitted! We will review in 24hrs!')">Submit KYC</button>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">🏆 LEADERBOARD</h3>
+<p style="font-size:14px;line-height:22px">1. 🥇 @miner_king - 5,420 coins<br>2. 🥈 @crypto_queen - 4,890 coins<br>3. 🥉 @frankphilips34 - 0 coins (You)<br><br>Keep mining to enter Top 10!</p>
+</div>
+
+<div class="card">
+<h3 style="color:gold;text-align:center">🌐 OUR SOCIALS</h3>
+<div class="socials">
+<a href="#">WhatsApp</a><a href="#">Telegram</a><a href="#">Facebook</a><a href="#">Twitter / X</a><a href="#">YouTube</a><a href="#">TikTok</a><a href="#">Instagram</a>
+</div>
+<small>© 2026 Mine Coins 247 - No Badge Version - Professional<br>Powered by Firebase Hosting - No Netlify Badge</small>
+</div>
+
+<script>
+let b=Number(localStorage.getItem('mc_bal')||0);
+let l=Number(localStorage.getItem('mc_last')||0);
+document.getElementById('bal').innerText=b;
+document.getElementById('bal2').innerText=b;
+function tick(){
+ let d=20*60*1000-(Date.now()-l);
+ if(d<=0){document.getElementById('timer').innerText='Ready to Mine!';document.getElementById('mineBtn').disabled=false;return;}
+ document.getElementById('mineBtn').disabled=true;
+ let m=Math.floor(d/60000),s=Math.floor((d%60000)/1000);
+ document.getElementById('timer').innerText=m+'m '+s+'s left';
+ setTimeout(tick,1000);
+}
+tick();
+function doMine(){
+ if(Date.now()-l<20*60*1000){alert('Wait 20 mins boss!');return;}
+ b+=10;l=Date.now();
+ localStorage.setItem('mc_bal',b);localStorage.setItem('mc_last',l);
+ document.getElementById('bal').innerText=b;document.getElementById('bal2').innerText=b;
+ tick();alert('+10 coins mined! Good job!');
+}
+function copyRef(){
+ let c=document.getElementById('refLink');c.select();document.execCommand('copy');
+ alert('Referral link copied! Share now and earn 20%!');
+}
+</script>
+</body>
+  </html>
