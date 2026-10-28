@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADMIN - Mine Coins 247</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;padding:15px;padding-bottom:120px}.card{background:#111;border:1px solid gold;border-radius:15px;padding:15px;margin:10px auto;max-width:500px}.btn{background:gold;color:#000;padding:12px;border:0;border-radius:10px;font-weight:bold;width:100%;margin:5px 0}</style></head><body>
+<div id="login" style="max-width:400px;margin:80px auto;text-align:center"><h1 style="color:gold">👑 ADMIN LOGIN</h1><div class="card"><input id="pass" type="password" placeholder="Enter Password" style="width:100%;padding:12px;background:#222;color:#fff;border:1px solid gold;border-radius:8px"><button class="btn" onclick="check()">Login</button><p style="font-size:12px;color:#888;margin-top:6px">Default password: admin123</p></div></div>
+<div id="dash" style="display:none"><h1 style="color:gold;text-align:center">MINE COINS 247 - ADMIN</h1><p style="text-align:center;font-size:12px">Simple Admin - Works on Vercel - No Badge</p>
+<div class="card"><h3>📊 STATS (This Phone)</h3><p>Coins Mined: <b id="coins">0</b></p><p>Last Mine: <b id="last">Never</b></p></div>
+<div class="card"><h3>💳 WALLETS SAVED</h3><p id="wallets">No wallet saved yet. When user save for index.html, e go show here on same phone.</p></div>
+<div class="card"><h3>📢 ADMIN ACTIONS</h3><button class="btn" onclick="alert('To see REAL users from all phones, we need Firebase. For now this simple admin works for testing!')">View All Users (Need Firebase for Real)</button><button class="btn" onclick="localStorage.clear();alert('Cleared!');location.reload()">Clear Test Data</button></div>
+<div class="card"><a href="index.html" style="color:gold">← Back to Mining Site</a></div></div>
+<script>
+function check(){if(document.getElementById('pass').value==='admin123'){document.getElementById('login').style.display='none';document.getElementById('dash').style.display='block';load();}else alert('Wrong! Use admin123');}
+function load(){document.getElementById('coins').innerText=localStorage.getItem('mc_bal')||0;let l=localStorage.getItem('mc_last');document.getElementById('last').innerText=l?new Date(Number(l)).toLocaleString():'Never';}
+</script></body></html>
